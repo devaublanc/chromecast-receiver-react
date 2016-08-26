@@ -7,11 +7,12 @@
   },
   "dependencies": {
     "react": "15.3.1",
-    "react-dom": "15.3.1"
+    "react-dom": "15.3.1",
+    "dashjs": "git@github.com:devaublanc/dash.js.git#fix.molotovNoBola"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cp node_modules/dashjs/dist/dash.all.min.js lib && react-scripts star",
+    "build": "cp node_modules/dashjs/dist/dash.all.min.js lib && react-scripts build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

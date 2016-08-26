@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 
-/* global MediaPlayer, Dash, cast */
+/* global dashjs, cast */
 const PROTOCOL = "urn:x-cast:org.dashif.dashjs";
 
 class Player extends Component {
@@ -23,26 +23,36 @@ class Player extends Component {
         // token = media.customData.drmParams.token;
         // HACK: remove this shit
 
-        url = 'http://v.cdn3.live.mlflux.net/public/france3/france3.isml/france3.mpd';
-        assetId = 'france3';
-        token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE0NzIyMjMxMjksImp0aSI6IjU3YzA1Nzk5Mjg5ODQiLCJjcnQiOiJbe1wiYXNzZXRJZFwiOlwiZnJhbmNlM1wiLFwic3RvcmVMaWNlbnNlXCI6ZmFsc2UsXCJwcm9maWxlXCI6e1wicmVudGFsXCI6e1wiYWJzb2x1dGVFeHBpcmF0aW9uXCI6XCIyMDE2LTA4LTI2VDIwOjUyOjA5KzAyOjAwXCIsXCJwbGF5RHVyYXRpb25cIjoxNDQwMDAwMH19LFwibWVzc2FnZVwiOlwiTGljZW5zZSBncmFudGVkXCIsXCJvdXRwdXRQcm90ZWN0aW9uXCI6e1wiZGlnaXRhbFwiOnRydWUsXCJhbmFsb2d1ZVwiOnRydWUsXCJlbmZvcmNlXCI6ZmFsc2V9fV0iLCJvcHREYXRhIjoie1widXNlcklkXCI6XCI4ZjNhYjAwNWEzN2Y0N2U5MDNhYWJmYTFjOWFlMTRlNDdkZTQxM2I3XCIsXCJzZXNzaW9uSWRcIjpcImF2MDVmNG9ia2ZiMW5ubXE0bmxnXCIsXCJtZXJjaGFudFwiOlwibW9sb3RvdlwifSJ9.npP-tnRutAA9qxgj3Wzk1TlIy8nLE5nsom4T-mltmlCy_3dSfyqUW7TnMta9yaTaRJs-mkSVTru1QOrsh-BZ3A';
+        url = 'http://v.cdn3.live.mlflux.net/public/franceo/franceo.isml/franceo.mpd';
+        token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE0NzIyMjYwOTQsImp0aSI6IjU3YzA2MzJlOTRhNTEiLCJjcnQiOiJbe1wiYXNzZXRJZFwiOlwiZnJhbmNlb1wiLFwic3RvcmVMaWNlbnNlXCI6ZmFsc2UsXCJwcm9maWxlXCI6e1wicmVudGFsXCI6e1wiYWJzb2x1dGVFeHBpcmF0aW9uXCI6XCIyMDE2LTA4LTI2VDIxOjQxOjM0KzAyOjAwXCIsXCJwbGF5RHVyYXRpb25cIjoxNDQwMDAwMH19LFwibWVzc2FnZVwiOlwiTGljZW5zZSBncmFudGVkXCIsXCJvdXRwdXRQcm90ZWN0aW9uXCI6e1wiZGlnaXRhbFwiOnRydWUsXCJhbmFsb2d1ZVwiOnRydWUsXCJlbmZvcmNlXCI6ZmFsc2V9fV0iLCJvcHREYXRhIjoie1widXNlcklkXCI6XCI4ZjNhYjAwNWEzN2Y0N2U5MDNhYWJmYTFjOWFlMTRlNDdkZTQxM2I3XCIsXCJzZXNzaW9uSWRcIjpcImF2MDY2YTBia2ZiMW5ubXE0cjQwXCIsXCJtZXJjaGFudFwiOlwibW9sb3RvdlwifSJ9.IFpkgphCHE8V9eoed1Vcj8q5kgBZij-MiDY7g4rV0Jf5QmwediqZWFcOn0-mbDeL3GipD9sWIFQ1yhlbOXZaiA';
 
-        const dataVideo = {
-            name: assetId,
-            url: url,
-            browsers: '',
-            protData: {
-                'com.widevine.alpha': {
-                    drmtoday: true,
-                    serverURL: 'https://lic.drmtoday.com/license-proxy-widevine/cenc/',
-                    httpRequestHeaders: {
-                        'x-dt-auth-token': token
-                    }
+
+        const protData = {
+            'com.widevine.alpha': {
+                drmtoday: true,
+                serverURL: 'https://lic.drmtoday.com/license-proxy-widevine/cenc/',
+                httpRequestHeaders: {
+                    'x-dt-auth-token': token
+                }
+            },
+            'com.microsoft.playready': {
+                drmtoday: true,
+                serverURL: 'https://lic.drmtoday.com/license-proxy-headerauth/drmtoday/RightsManager.asmx',
+                httpRequestHeaders: {
+                    'x-dt-auth-token': token
                 }
             }
         }
 
-        this.player.attachSource(dataVideo.url, null, dataVideo.protData);
+        this.video.setMediaKeys(null).then(() => {
+            console.log('============================= set protection and play');
+            this.player.setProtectionData(protData);
+            this.player.attachSource(url);
+            console.log('=============================this.player.play();');
+            this.player.play();
+        });
+
+
 
     }
 
@@ -82,10 +92,10 @@ class Player extends Component {
         ///////// INIT DASH.JS /////////
 
         // init player
-        this.player = new MediaPlayer(new Dash.di.DashContext());
-        this.player.startup();
-        this.player.setAutoPlay(true);
+        this.player = dashjs.MediaPlayer().create();
+        this.player.initialize();
         this.player.attachView(this.video);
+        this.player.attachVideoContainer(this.refs['container']);
 
 
         ///////// BIND EVENTS /////////
@@ -105,8 +115,8 @@ class Player extends Component {
 
     render() {
         return (
-            <div className="Player">
-                <video ref="video" autoPlay className="Player-video"></video>
+            <div className="Player" ref="container">
+                <video ref="video" autoPlay="false" className="Player-video"></video>
             </div>
         );
     }
