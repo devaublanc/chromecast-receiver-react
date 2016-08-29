@@ -15,16 +15,16 @@ class Player extends Component {
     loadStream = (newMedia) => {
         this.media = newMedia;
 
-        console.log("this.media", this.media);
-        let url, assetId, token;
+        console.log("this.media====================", this.media);
+        let url, token;
 
-        // url = media.contentId;
-        // assetId = media.customData.drmParams.assetId;
-        // token = media.customData.drmParams.token;
-        // HACK: remove this shit
 
-        url = 'http://v.cdn3.live.mlflux.net/public/franceo/franceo.isml/franceo.mpd';
-        token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE0NzIyMjYwOTQsImp0aSI6IjU3YzA2MzJlOTRhNTEiLCJjcnQiOiJbe1wiYXNzZXRJZFwiOlwiZnJhbmNlb1wiLFwic3RvcmVMaWNlbnNlXCI6ZmFsc2UsXCJwcm9maWxlXCI6e1wicmVudGFsXCI6e1wiYWJzb2x1dGVFeHBpcmF0aW9uXCI6XCIyMDE2LTA4LTI2VDIxOjQxOjM0KzAyOjAwXCIsXCJwbGF5RHVyYXRpb25cIjoxNDQwMDAwMH19LFwibWVzc2FnZVwiOlwiTGljZW5zZSBncmFudGVkXCIsXCJvdXRwdXRQcm90ZWN0aW9uXCI6e1wiZGlnaXRhbFwiOnRydWUsXCJhbmFsb2d1ZVwiOnRydWUsXCJlbmZvcmNlXCI6ZmFsc2V9fV0iLCJvcHREYXRhIjoie1widXNlcklkXCI6XCI4ZjNhYjAwNWEzN2Y0N2U5MDNhYWJmYTFjOWFlMTRlNDdkZTQxM2I3XCIsXCJzZXNzaW9uSWRcIjpcImF2MDY2YTBia2ZiMW5ubXE0cjQwXCIsXCJtZXJjaGFudFwiOlwibW9sb3RvdlwifSJ9.IFpkgphCHE8V9eoed1Vcj8q5kgBZij-MiDY7g4rV0Jf5QmwediqZWFcOn0-mbDeL3GipD9sWIFQ1yhlbOXZaiA';
+        // MOCK 
+        // url = 'http://v.cdn3.live.mlflux.net/public/franceo/franceo.isml/franceo.mpd';
+        // token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE0NzIyMjYwOTQsImp0aSI6IjU3YzA2MzJlOTRhNTEiLCJjcnQiOiJbe1wiYXNzZXRJZFwiOlwiZnJhbmNlb1wiLFwic3RvcmVMaWNlbnNlXCI6ZmFsc2UsXCJwcm9maWxlXCI6e1wicmVudGFsXCI6e1wiYWJzb2x1dGVFeHBpcmF0aW9uXCI6XCIyMDE2LTA4LTI2VDIxOjQxOjM0KzAyOjAwXCIsXCJwbGF5RHVyYXRpb25cIjoxNDQwMDAwMH19LFwibWVzc2FnZVwiOlwiTGljZW5zZSBncmFudGVkXCIsXCJvdXRwdXRQcm90ZWN0aW9uXCI6e1wiZGlnaXRhbFwiOnRydWUsXCJhbmFsb2d1ZVwiOnRydWUsXCJlbmZvcmNlXCI6ZmFsc2V9fV0iLCJvcHREYXRhIjoie1widXNlcklkXCI6XCI4ZjNhYjAwNWEzN2Y0N2U5MDNhYWJmYTFjOWFlMTRlNDdkZTQxM2I3XCIsXCJzZXNzaW9uSWRcIjpcImF2MDY2YTBia2ZiMW5ubXE0cjQwXCIsXCJtZXJjaGFudFwiOlwibW9sb3RvdlwifSJ9.IFpkgphCHE8V9eoed1Vcj8q5kgBZij-MiDY7g4rV0Jf5QmwediqZWFcOn0-mbDeL3GipD9sWIFQ1yhlbOXZaiA';
+
+        url = this.media.contentId;
+        token = this.media.metadata.asset.token
 
 
         const protData = {
@@ -57,7 +57,7 @@ class Player extends Component {
     }
 
     onLoad = (e) => {
-        console.log('onLoad====');
+        console.log('onLoad++++++++++++++++++++++++++++', e);
         this.loadStream(e.data.media);
 
         // this.video.addEventListener("timeupdate", onVideoTime.bind(this));
@@ -109,7 +109,6 @@ class Player extends Component {
         };
 
         // Video events
-
         this.receiver.start(appConfig);
     }
 
