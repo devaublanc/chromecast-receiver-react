@@ -11,8 +11,8 @@
     "dashjs": "git@github.com:devaublanc/dash.js.git#fix.molotovNoBola"
   },
   "scripts": {
-    "start": "cp node_modules/dashjs/dist/dash.all.min.js lib && react-scripts start",
-    "build": "cp node_modules/dashjs/dist/dash.all.min.js lib && react-scripts build",
+    "start": "mkdir -p lib && cp node_modules/dashjs/dist/dash.all.min.js lib && react-scripts start",
+    "build": "react-scripts build && mkdir -p build/lib/ && cp node_modules/dashjs/dist/dash.all.min.js build/lib",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
