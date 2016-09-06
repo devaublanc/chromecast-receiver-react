@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
+import Logo from '../Logo';
 
 /* global dashjs, cast */
 const PROTOCOL = "urn:x-cast:org.dashif.dashjs";
@@ -12,6 +13,9 @@ class Player extends Component {
     receiver = null
     mediaManeger = null
     messageBus = null
+    state = {
+        splash: true
+    };
 
     getProtectionConfig = (token) =>{
         return {
@@ -33,6 +37,7 @@ class Player extends Component {
             this.player.setProtectionData(protectionConfig);
             this.player.attachSource(contentId);
             console.log('=============================this.player.play();');
+            this.setState({splash: false});
             this.player.play();
         });
 
@@ -99,6 +104,7 @@ class Player extends Component {
     render() {
         return (
             <div className="Player" ref="container">
+                { this.state.splash && <Logo /> }
                 <video ref="video" autoPlay="false" className="Player-video"></video>
             </div>
         );
