@@ -12,42 +12,25 @@ class Player extends Component {
     mediaManeger = null
     messageBus = null
 
-    loadStream = (newMedia) => {
-        this.media = newMedia;
-
-        console.log("this.media====================", this.media);
-        let url, token;
-
-
-        // MOCK 
-        // url = 'http://v.cdn3.live.mlflux.net/public/franceo/franceo.isml/franceo.mpd';
-        // token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE0NzIyMjYwOTQsImp0aSI6IjU3YzA2MzJlOTRhNTEiLCJjcnQiOiJbe1wiYXNzZXRJZFwiOlwiZnJhbmNlb1wiLFwic3RvcmVMaWNlbnNlXCI6ZmFsc2UsXCJwcm9maWxlXCI6e1wicmVudGFsXCI6e1wiYWJzb2x1dGVFeHBpcmF0aW9uXCI6XCIyMDE2LTA4LTI2VDIxOjQxOjM0KzAyOjAwXCIsXCJwbGF5RHVyYXRpb25cIjoxNDQwMDAwMH19LFwibWVzc2FnZVwiOlwiTGljZW5zZSBncmFudGVkXCIsXCJvdXRwdXRQcm90ZWN0aW9uXCI6e1wiZGlnaXRhbFwiOnRydWUsXCJhbmFsb2d1ZVwiOnRydWUsXCJlbmZvcmNlXCI6ZmFsc2V9fV0iLCJvcHREYXRhIjoie1widXNlcklkXCI6XCI4ZjNhYjAwNWEzN2Y0N2U5MDNhYWJmYTFjOWFlMTRlNDdkZTQxM2I3XCIsXCJzZXNzaW9uSWRcIjpcImF2MDY2YTBia2ZiMW5ubXE0cjQwXCIsXCJtZXJjaGFudFwiOlwibW9sb3RvdlwifSJ9.IFpkgphCHE8V9eoed1Vcj8q5kgBZij-MiDY7g4rV0Jf5QmwediqZWFcOn0-mbDeL3GipD9sWIFQ1yhlbOXZaiA';
-
-        url = this.media.contentId;
-        token = this.media.metadata.asset.token
-
-
-        const protData = {
+    getProtectionConfig = (token) =>{
+        return {
             'com.widevine.alpha': {
                 drmtoday: true,
                 serverURL: 'https://lic.drmtoday.com/license-proxy-widevine/cenc/',
                 httpRequestHeaders: {
                     'x-dt-auth-token': token
                 }
-            },
-            'com.microsoft.playready': {
-                drmtoday: true,
-                serverURL: 'https://lic.drmtoday.com/license-proxy-headerauth/drmtoday/RightsManager.asmx',
-                httpRequestHeaders: {
-                    'x-dt-auth-token': token
-                }
             }
-        }
+        };
+    }
+
+    loadStream = ({ contentId, metadata }) => {
+        const protectionConfig = this.getProtectionConfig(metadata.asset.token);
 
         this.video.setMediaKeys(null).then(() => {
             console.log('============================= set protection and play');
-            this.player.setProtectionData(protData);
-            this.player.attachSource(url);
+            this.player.setProtectionData(protectionConfig);
+            this.player.attachSource(contentId);
             console.log('=============================this.player.play();');
             this.player.play();
         });
