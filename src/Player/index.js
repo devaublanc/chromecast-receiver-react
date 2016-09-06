@@ -3,6 +3,7 @@ import './index.css';
 
 /* global dashjs, cast */
 const PROTOCOL = "urn:x-cast:org.dashif.dashjs";
+const APPLICATION_TITLE = "Molotov.tv";
 
 class Player extends Component {
 
@@ -63,7 +64,7 @@ class Player extends Component {
         // init receiver
         this.receiver = cast.receiver.CastReceiverManager.getInstance();
         const appConfig = new cast.receiver.CastReceiverManager.Config();
-        appConfig.statusText = "DashJS Molotov Receiver";
+        appConfig.statusText = APPLICATION_TITLE;
         this.messageBus = this.receiver.getCastMessageBus(PROTOCOL);
 
         // attach mediaManager
