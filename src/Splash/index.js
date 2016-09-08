@@ -2,8 +2,8 @@ import React from 'react';
 import './index.css';
 
 
-const Logo = () => (
-    <svg viewBox="0 0 95 34" className="Logo">
+const Splash = () => (
+    <svg viewBox="0 0 95 34" className="Splash">
         <defs>
             <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="a">
                 <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
@@ -21,4 +21,4 @@ const Logo = () => (
     </svg>
 );
 
-export default Logo;
+export default Splash;
