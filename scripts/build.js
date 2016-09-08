@@ -2,7 +2,7 @@
 process.env.NODE_ENV = 'production';
 
 var chalk = require('chalk');
-var fs = require('fs');
+var fs = require('fs-extra');
 var path = require('path');
 var filesize = require('filesize');
 var gzipSize = require('gzip-size').sync;
@@ -12,6 +12,20 @@ var config = require('../config/webpack.config.prod');
 var paths = require('../config/paths');
 var recursive = require('recursive-readdir');
 var stripAnsi = require('strip-ansi');
+
+function copyRecursiveSync(src, dest) {
+  var exists = fs.existsSync(src);
+  var stats = exists && fs.statSync(src);
+  var isDirectory = exists && stats.isDirectory();
+  if (exists && isDirectory) {
+    fs.mkdirSync(dest);
+    fs.readdirSync(src).forEach(function(childItemName) {
+      copyRecursiveSync(path.join(src, childItemName), path.join(dest, childItemName));
+    });
+  } else {
+    fs.linkSync(src, dest);
+  }
+};
 
 // Input: /User/dan/app/build/static/js/main.82be8.js
 // Output: /static/js/main.js
@@ -103,6 +117,17 @@ function build(previousSizeMap) {
     }
 
     console.log(chalk.green('Compiled successfully.'));
+    console.log();
+
+    console.log();
+    console.log('Copy assets:');
+    try {
+      copyRecursiveSync(paths.appAsset , paths.appBuild + '/asset')
+      console.log("Copy assets success !")
+    } catch (err) {
+      console.log("Error while copy assets...")
+      console.error(err)
+    }
     console.log();
 
     console.log('File sizes after gzip:');
