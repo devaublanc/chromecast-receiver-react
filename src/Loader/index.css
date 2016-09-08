@@ -1,17 +1,17 @@
-.Loader {
+.loader {
   height: 60px;
   width: 60px;
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: var(--z-index-loader);
+  z-index: 1;
   margin: -30px 0 0 -30px;
   animation: rotationLoaderPlayer 1s infinite linear;
   border: 6px solid rgba(255, 255, 255, 0.2);
   border-radius: 100%;
 }
 
-.Loader:before {
+.loader:before {
   content: "";
   display: block;
   position: absolute;

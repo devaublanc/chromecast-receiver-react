@@ -1,9 +1,9 @@
 import React from 'react'
 
-import './index.css'
+import styles from './index.css'
 
 const Loader = () =>
 
-<div className="Loader" />
+<div className={ styles.loader } />
 
 export default Loader

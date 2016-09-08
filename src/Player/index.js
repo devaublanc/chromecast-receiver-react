@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Splash from '../Splash';
 import Loader from '../Loader';
 
-import './index.css';
+import styles from './index.css';
 
 /* global dashjs, cast */
 const PROTOCOL = "urn:x-cast:org.dashif.dashjs";
@@ -215,10 +215,13 @@ class Player extends Component {
 
 
         return (
-            <div className="Player" ref="container">
+            <div className={ styles.player } ref="container">
                 { splash && <Splash /> }
                 { loading && <Loader /> }
-                <video ref="video" autoPlay="false" className="Player-video"></video>
+                <video
+                    ref="video"
+                    autoPlay="false"
+                    className={ styles.video } />
             </div>
         );
     }
