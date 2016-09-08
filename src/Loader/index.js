@@ -4,7 +4,6 @@ import './index.css'
 
 const Loader = () =>
 
-<div className="Loader">
-</div>
+<div className="Loader" />
 
 export default Loader
