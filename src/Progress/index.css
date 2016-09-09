@@ -1,0 +1,98 @@
+.root {
+}
+
+/**************progress******************/
+.progress {
+  z-index: 1;
+  background-color: var(--yellowAmber);
+  border: 1px solid var(--yellowDark);
+  width: 0;
+  top: 0;
+  max-width: 100%;
+  height: var(--progress-height);
+  position: relative;
+  border-radius: 4px;
+
+}
+
+.progress:before {
+  width: 25px;
+  height: 25px;
+  content: "";
+  display: block;
+  position: absolute;
+  right: -18px;
+  top: -8px;
+  line-height: 20px;
+  background-color: var(--yellowAmber);
+  border-radius: 50%;
+  border: solid 1px var(--yellowPirateGold);
+  box-shadow: 0px 1px 8px var(--black);
+  text-align: center;
+}
+
+.range.unauthorized {
+  cursor: not-allowed;
+}
+
+.mini {
+  composes: progress;
+  height: 8px;
+  top: -2px;
+}
+
+.mini::before {
+  width: 15px;
+  height: 15px;
+  top: -4px;
+  right: -8px;
+}
+
+
+/**************progresslive******************/
+.progressLive {
+  composes: progress;
+  background-color: var(--redCinnabar);
+  border: 1px solid var(--redPomegranate);
+}
+
+.progressLive:before {
+  background-color: var(--redCinnabar);
+  border: solid 1px var(--redPomegranate);
+  box-shadow: 0px 0px 2px var(--redTamarillo);
+  width: 42px;
+  height: 25px;
+  line-height: 20px;
+  border-radius: 0;
+  top: -8px;
+  right: -27px;
+}
+
+.progressLive:after {
+  content: "live";
+  display: block;
+  color: var(--white);
+  position: absolute;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  font-size: 15px;
+  width: 38px;
+  height: 23px;
+  top: -6px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  right: -25px;
+}
+
+/**************range******************/
+.range {
+  width: 100%;
+  height: var(--progress-height);
+  position: absolute;
+  top: -12px;
+  opacity: 0;
+  z-index: var(--z-index-range);
+  cursor: pointer;
+  padding: 15px 0;
+}

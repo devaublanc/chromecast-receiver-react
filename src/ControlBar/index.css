@@ -1,0 +1,54 @@
+.root {
+  padding: 0 80px;
+}
+
+.controls {
+  width: 100%;
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  padding: 0 80px;
+}
+
+.control {
+  margin:0 15px;
+}
+
+.control:first-child {
+  margin-left: 0;
+}
+
+.control:last-child {
+  margin-right: 0;
+}
+
+.progress {
+  position: absolute;
+  width: 100%;
+}
+
+.volume {
+  margin-left: 15px;
+}
+
+/* don't touch this the size is good on webapp */
+.live {
+  background: var(--redCinnabar);
+  display: inline-block;
+  vertical-align: 10px;
+  margin-left: 6px;
+  font-size: 9px;
+  padding: 4px 6px;
+  border-radius: 2px;
+  opacity: .8;
+  color: var(--white);
+}
+
+.floatRight {
+  float: right;
+}
+
+.noStartover i {
+  opacity: .5;
+  cursor: not-allowed;
+}

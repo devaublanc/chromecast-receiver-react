@@ -1,0 +1,20 @@
+
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">    
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Player" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bookmark" filter="url(#filter-1)" transform="translate(3.000000, 1.000000)">
+            <path d="M15,30 C23.2842712,30 30,23.2842712 30,15 C30,6.71572875 23.2842712,0 15,0 C6.71572875,0 0,6.71572875 0,15 C0,23.2842712 6.71572875,30 15,30 Z M15.0000002,27.9375004 C22.1451842,27.9375004 27.9375004,22.1451842 27.9375004,15.0000002 C27.9375004,7.85481613 22.1451842,2.0625 15.0000002,2.0625 C7.85481613,2.0625 2.0625,7.85481613 2.0625,15.0000002 C2.0625,22.1451842 7.85481613,27.9375004 15.0000002,27.9375004 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+            <path d="M15,23.75 C19.8324916,23.75 23.75,19.8324916 23.75,15 C23.75,10.1675084 19.8324916,6.25 15,6.25 C10.1675084,6.25 6.25,10.1675084 6.25,15 C6.25,19.8324916 10.1675084,23.75 15,23.75 Z" id="Oval-577" fill="#BB0F0F"></path>
+        </g>
+    </g>
+</svg>

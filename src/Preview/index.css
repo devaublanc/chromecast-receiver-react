@@ -1,0 +1,46 @@
+.root {
+  background-color: var(--black);
+  width: 320px;
+  height: 200px;
+  position: absolute;
+  border-radius: 3px;
+  outline: var(--greyShip) 6px solid;
+  outline-color: var(--greyShip);
+  box-shadow: 2px 3px 10px 8px rgba(0, 0, 0, 0.9)
+}
+
+.root:before {
+  content:'';
+  display:block;
+  width:0;
+  height:0;
+  position:absolute;
+  border-width: 16px;
+  border-style: solid;
+  border-color: var(--greyShip) transparent transparent transparent;
+  filter: drop-shadow(2px 5px 3px rgba(0, 0, 0, 0.7));
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -38px;
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+  zoom: 2;
+}
+
+.time {
+  background: var(--greyShip);
+  bottom: 0;
+  color: #DBDBDB;
+  font-size: 14px;
+  font-weight: 700;
+  height: 20px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  padding: 2px 0;
+  line-height: 23px;
+}

@@ -1,0 +1,19 @@
+:root {
+  --black: #000;
+
+  --greyMineShaft: #222;
+  --greyMineShaftLight: #333333;
+  --greyShip: #2D292E;
+
+  --orangePizza: #DC640F;
+
+  --redCinnabar: #e32121;
+  --redPomegranate: #ef3e36;
+  --redTamarillo: #A91010;
+
+  --yellowAmber: #FFC107;
+  --yellowDark: #DDAB40;
+  --yellowPirateGold: #AF8300;
+
+  --white: #FFFFFF;
+}

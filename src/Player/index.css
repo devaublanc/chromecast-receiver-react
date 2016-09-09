@@ -1,12 +1,33 @@
-.player {
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background: var(--black);
+}
+
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
-    display: flex;
-    background: black;
+}
+
+.player {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    font-family: var(--open-sans);
+    background: var(--black);
+    min-width: 725px;
 }
 
 .video {
     width: 100%;
+    height: 100%;
+    background: var(--black);
 }

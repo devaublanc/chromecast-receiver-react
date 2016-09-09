@@ -1,11 +1,22 @@
 var path = require('path');
 var autoprefixer = require('autoprefixer');
+var postcssCustomProperties = require('postcss-custom-properties');
+var postcssInlineSvg = require('postcss-inline-svg');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 var WatchMissingNodeModulesPlugin = require('../scripts/utils/WatchMissingNodeModulesPlugin');
 var paths = require('./paths');
 var env = require('./env');
+var webpackPostcssTools = require('webpack-postcss-tools');
+
+var colorsMap = webpackPostcssTools.makeVarMap(paths.appSrc + '/css/colors.css');
+var fontsMap = webpackPostcssTools.makeVarMap(paths.appSrc + '/css/fonts.css');
+var zIndexMap = webpackPostcssTools.makeVarMap(paths.appSrc + '/css/zindex.css');
+var delayMap = webpackPostcssTools.makeVarMap(paths.appSrc + '/css/delay.css');
+var sizesMap = webpackPostcssTools.makeVarMap(paths.appSrc + '/css/sizes.css');
+
+var variablesMap = Object.assign({}, colorsMap.vars, fontsMap.vars, zIndexMap.vars, delayMap.vars, sizesMap.vars);
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -148,6 +159,7 @@ module.exports = {
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [
+      webpackPostcssTools.prependTildesToImports,
       autoprefixer({
         browsers: [
           '>1%',
@@ -156,6 +168,10 @@ module.exports = {
           'not ie < 9', // React doesn't support IE8 anyway
         ]
       }),
+      postcssCustomProperties({
+          variables: variablesMap
+      }),
+      postcssInlineSvg
     ];
   },
   plugins: [

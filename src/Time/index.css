@@ -1,0 +1,18 @@
+.root {
+  display: inline-block;
+  height: 100%;
+  vertical-align: 8px;
+  cursor: pointer;
+  color: var(--white);
+  opacity: .7;
+}
+
+.root:hover {
+    color: var(--yellowAmber);
+    opacity: 1;
+}
+
+.time {
+
+  font-size: 15px;
+}

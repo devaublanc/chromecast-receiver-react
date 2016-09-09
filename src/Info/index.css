@@ -1,0 +1,112 @@
+.root {
+  color: var(--white);
+  padding: 0 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.item {
+  margin: 0 10px;
+}
+
+.item:first-child {
+  margin-left: 0;
+}
+
+.item:last-child {
+  margin-right: 0;
+}
+
+.logo {
+  composes: item;
+  width: 50px;
+  filter: drop-shadow(2px 2px 4px var(--black));
+}
+
+.title {
+  composes: item;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 25px;
+  padding: 5px;
+  filter: drop-shadow(2px 2px 4px var(--black));
+}
+
+.csa {
+  composes: item;
+  margin-right: 35px;
+  margin-top: 7px;
+}
+
+.actions {
+  composes: item;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  margin: 0 10px;
+}
+
+.btnDisabled {
+  cursor: default;
+}
+
+.btnDisabled i {
+  opacity: .5;
+}
+
+.btn:first-child {
+  margin-left: 0;
+}
+
+.btn:last-child {
+  margin-right: 0;
+}
+
+/*
+  Sorry for this horrible thing but my boss wanted it
+  and I really want to keep my Job. My Mom gonna be proud of me.
+  #R.I.P */
+
+.channel19,
+.channel18,
+.channel49,
+.channel42,
+.channel43,
+.channel75 {
+  width: 25px;
+}
+
+.channel24,
+.channel2,
+.channel116,
+.channel95,
+.channel107,
+.channel40,
+.channel26,
+.channel38,
+.channel58,
+.channel89,
+.channel62,
+.channel8 {
+  width: 30px;
+}
+
+.channel36,
+.channel45 {
+  width: 40px;
+}
+
+.channel56,
+.channel21,
+.channel103,
+.channel74,
+.channel72 {
+  width: 60px;
+}
