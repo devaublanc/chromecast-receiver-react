@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import classNames from 'classnames'
 
-import Control from '../Control'
 import Icon from '../Icon'
 
 import styles from './index.css'
@@ -26,6 +25,7 @@ const Info = ({
     <img
         src={ logo }
         onClick={ onChannelClick }
+        alt="channel"
         className={ classNames(styles.logo, {
             [styles[`channel${channelId}`]]: channelId
         })} />
@@ -35,37 +35,6 @@ const Info = ({
     <div className={ styles.csa }>
         <Icon name={`csa${csa}`}
             customClass={ styles.iconCsa }/>
-    </div>
-
-    <div className={ styles.actions }>
-        <div className={ styles.btn }>
-            <Control
-                action={ onLikeClick }
-                customClass={ styles.btnHeart }
-                tooltip={{
-                    text: isLiked ? 'Ne plus recommander ce programme' : 'Recommander ce programme',
-                    id: 'btnHeart',
-                    place: 'top'
-                }}
-                icon={ isLiked ? 'heartActive' : 'heart' } />
-        </div>
-        <div className={ styles.btn }>
-            <Control
-                action={ () => {
-                    if (bookmarkAllowed) {
-                        onBookmarkAddClick()
-                    }
-                }}
-                customClass={ classNames({
-                    [styles.btnDisabled]: !bookmarkAllowed
-                })}
-                tooltip={{
-                    text: bookmarkAllowed ? (isBookmarked ? 'Retirer le bookmark' : 'Ajouter au bookmark') : 'Bientôt disponible',
-                    id: 'btnBookmark',
-                    place: 'top'
-                }}
-                icon={ isBookmarked ? 'removeBookmark' : 'addbookmark' } />
-        </div>
     </div>
 </div>
 

@@ -1,7 +1,5 @@
 import React, {PropTypes} from 'react'
-import classNames from 'classnames'
 
-import Control from '../Control'
 import Time from '../Time'
 import SeekBar from '../SeekBar'
 
@@ -39,35 +37,6 @@ const ControlBar = ({
 
 
     <div className={ styles.controls }>
-        {
-            !isPlaying &&
-                <Control
-                disabled={ !canplay }
-                action={ actions.play }
-                customClass={ styles.control }
-                icon="play" />
-        }
-        {
-            isPlaying &&
-                <Control
-                action={ actions.pause }
-                disabled={ !canplay }
-                customClass={ styles.control }
-                icon="pause" />
-        }
-
-        <Control
-            action={ seekAllowed ? actions.startOver : () => {} }
-            customClass={ classNames(styles.control, {
-                [styles.noStartover]: !seekAllowed
-            })}
-            tooltip={{
-                text: (seekAllowed ? 'Retour au début' : 'Retour au début non disponible sur cette chaîne'),
-                id: 'startover',
-                place: 'top'
-            }}
-            icon="startover" />
-
 
         <Time
             start={ formatSeconds(progress.seekProgress) }
@@ -79,12 +48,6 @@ const ControlBar = ({
             <div className={ styles.live }>LIVE</div>
         }
 
-        <div className={ styles.floatRight }>
-            <Control
-                customClass={ styles.control }
-                action={ actions.toggleFullScreen }
-                icon={fullscreen ? 'fullscreenBack' : 'fullscreen'} />
-        </div>
     </div>
 
 </div>

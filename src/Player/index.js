@@ -316,8 +316,11 @@ class Player extends Component {
 
 
         return (
+
             <div className={ styles.root }>
                 <div className={ styles.player } ref="container">
+                    { splash && <Splash /> }
+                    { loading && <Loader /> }
                     <video
                         ref="video"
                         autoPlay="false"
@@ -348,6 +351,7 @@ class Player extends Component {
                     </Footer>
                 </div>
             </div>
+
         );
     }
 }
