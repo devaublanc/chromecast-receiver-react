@@ -1,0 +1,547 @@
+.icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 32px;
+  font-size: 8px;
+  line-height: 32px;
+  height: 32px;
+  color: var(--white);
+  background-size: 100%;
+  filter: drop-shadow(2px 2px 10px var(--black));
+}
+
+/**********************/
+/******* PLAY *********/
+/**********************/
+
+@svg-load play-white url(play.svg) {
+  fill: var(--white);
+}
+
+@svg-load play-yellow url(play.svg) {
+  fill: var(--yellowAmber);
+}
+
+.play {
+  composes: icon;
+  background-image: svg-inline(play-white);
+}
+
+.play:hover {
+  background-image: svg-inline(play-yellow);
+}
+
+/**********************/
+/******* PAUSE *********/
+/**********************/
+
+@svg-load pause-white url(pause.svg) {
+  fill: var(--white);
+}
+
+@svg-load pause-yellow url(pause.svg) {
+  fill: var(--yellowAmber);
+}
+
+.pause {
+  composes: icon;
+  background-image: svg-inline(pause-white);
+}
+
+.pause:hover {
+  background-image: svg-inline(pause-yellow);
+}
+
+/**********************/
+/******* CHECK *********/
+/**********************/
+
+@svg-load check-white url(check.svg) {
+  fill: var(--white);
+}
+
+@svg-load check-yellow url(check.svg) {
+  fill: var(--yellowAmber);
+}
+
+.check {
+  composes: icon;
+  background-image: svg-inline(check-white);
+}
+
+.check:hover {
+  background-image: svg-inline(check-yellow);
+}
+
+.checkActive {
+  composes: icon;
+  background-image: svg-inline(check-yellow);
+}
+
+/**********************/
+/******* SUBTITLE *****/
+/**********************/
+
+@svg-load subtitle-white url(subtitle.svg) {
+  fill: var(--white);
+}
+
+@svg-load subtitle-yellow url(subtitle.svg) {
+  fill: var(--yellowAmber);
+}
+
+.subtitle {
+  composes: icon;
+  background-image: svg-inline(subtitle-white);
+}
+
+.subtitle:hover {
+  background-image: svg-inline(subtitle-yellow);
+}
+
+.subtitleActive {
+  composes: icon;
+  background-image: svg-inline(subtitle-yellow);
+}
+
+/**********************/
+/******* HEART ********/
+/**********************/
+
+@svg-load heart-white url(heart.svg) {
+}
+
+@svg-load heart-yellow url(heart-yellow.svg) {
+}
+
+.heart {
+  composes: icon;
+  background-image: svg-inline(heart-white);
+  width: 40px;
+  height: 40px;
+}
+
+.heartActive {
+  composes: heart;
+  background-image: svg-inline(heart-yellow);
+}
+
+.heart:hover {
+  background-image: svg-inline(heart-yellow);
+}
+
+
+
+/***************************/
+/***** FORWARD/REWIND ******/
+/***************************/
+
+@svg-load forward-white url(forward.svg) {
+  fill: var(--white);
+}
+
+.forward {
+  composes: icon;
+  background-image: svg-inline(forward-white);
+}
+
+.rewind {
+  composes: forward;
+  transform: scaleX(-1);
+}
+
+
+/**********************/
+/***** STARTOVER ******/
+/**********************/
+
+@svg-load startover-white url(startover.svg) {
+  fill: var(--white);
+}
+
+@svg-load startover-yellow url(startover.svg) {
+  fill: var(--yellowAmber);
+}
+
+.startover {
+  composes: icon;
+  background-image: svg-inline(startover-white);
+}
+
+.startover:hover {
+  background-image: svg-inline(startover-yellow);
+}
+
+
+/**********************/
+/***** BOOKMARK ******/
+/**********************/
+
+@svg-load bookmark-white url(bookmark.svg) {
+  fill: var(--white);
+}
+
+.bookmark {
+  composes: icon;
+  background-image: svg-inline(bookmark-white);
+}
+
+/**********************/
+/**** ADD BOOKMARK ****/
+/**********************/
+
+@svg-load addbookmark-white url(plus.svg) {
+  fill: var(--white);
+}
+
+@svg-load addbookmark-yellow url(plus.svg) {
+  fill: var(--yellowAmber);
+}
+
+@svg-load removeBookmark-white url(minus.svg) {
+  fill: var(--white);
+}
+
+@svg-load removeBookmark-yellow url(minus.svg) {
+  fill: var(--yellowAmber);
+}
+
+.addbookmark {
+  composes: icon;
+  width: 35px;
+  height: 35px;
+  vertical-align: bottom;
+  background-image: svg-inline(addbookmark-white);
+  background-size: 100%;
+}
+
+.addbookmark:hover {
+  background-image: svg-inline(addbookmark-yellow);
+  background-size: 100%;
+}
+
+.removeBookmark {
+  composes: icon;
+  width: 33px;
+  height: 33px;
+  background-image: svg-inline(removeBookmark-white);
+  background-size: 100%;
+}
+
+.removeBookmark:hover {
+  background-image: svg-inline(removeBookmark-yellow);
+  background-size: 100%;
+}
+
+/**********************/
+/***** FULLSCREEN *****/
+/**********************/
+
+@svg-load fullscreen-white url(fullscreen.svg) {
+  fill: var(--white);
+}
+
+@svg-load fullscreen-yellow url(fullscreen.svg) {
+  fill: var(--yellowAmber);
+}
+
+@svg-load fullscreen-back-white url(fullscreen-back.svg) {
+  fill: var(--white);
+}
+
+@svg-load fullscreen-back-yellow url(fullscreen-back.svg) {
+  fill: var(--yellowAmber);
+}
+
+.fullscreen {
+  composes: icon;
+  background-image: svg-inline(fullscreen-white);
+}
+
+.fullscreen:hover {
+  background-image: svg-inline(fullscreen-yellow);
+}
+
+.fullscreenBack {
+  composes: icon;
+  background-image: svg-inline(fullscreen-back-white);
+}
+
+.fullscreenBack:hover {
+  background-image: svg-inline(fullscreen-back-yellow);
+}
+
+
+/**********************/
+/******* VOLUME *********/
+/**********************/
+
+@svg-load volume-max-white url(volume-max.svg) {
+  fill: var(--white);
+}
+
+@svg-load volume-max-yellow url(volume-max.svg) {
+  fill: var(--yellowAmber);
+}
+
+@svg-load volume-low-white url(volume-low.svg) {
+  fill: var(--white);
+}
+
+@svg-load volume-low-yellow url(volume-low.svg) {
+  fill: var(--yellowAmber);
+}
+
+@svg-load volume-mute-white url(volume-mute.svg) {
+  fill: var(--white);
+}
+
+@svg-load volume-mute-yellow url(volume-mute.svg) {
+  fill: var(--yellowAmber);
+}
+
+.volume {
+  composes: icon;
+  background-image: svg-inline(volume-max-white);
+}
+
+.volume:hover {
+  background-image: svg-inline(volume-max-yellow);
+}
+
+.volumeLow {
+  composes: icon;
+  background-image: svg-inline(volume-low-white);
+}
+
+.volumeLow:hover {
+  background-image: svg-inline(volume-low-yellow);
+}
+
+.volumeMute {
+  composes: icon;
+  background-image: svg-inline(volume-mute-white);
+}
+
+.volumeMute:hover {
+  background-image: svg-inline(volume-mute-yellow);
+}
+
+/**************************/
+/********* CSA **********/
+/**************************/
+
+.csa {
+  composes: icon;
+  width: 32px;
+  height: 30px;
+}
+
+/**************************/
+/********* CSA10 **********/
+/**************************/
+
+@svg-load csa-10-white url(csa-10.svg) {
+  fill: var(--white);
+}
+
+.csa10 {
+  composes: csa;
+  background-image: svg-inline(csa-10-white);
+}
+
+/**************************/
+/********* CSA12 **********/
+/**************************/
+
+@svg-load csa-12-white url(csa-12.svg) {
+  fill: var(--white);
+}
+
+.csa12 {
+  composes: csa;
+  background-image: svg-inline(csa-12-white);
+}
+
+/**************************/
+/********* CSA16 **********/
+/**************************/
+
+@svg-load csa-16-white url(csa-16.svg) {
+  fill: var(--white);
+}
+
+.csa16 {
+  composes: csa;
+  background-image: svg-inline(csa-16-white);
+}
+
+/**************************/
+/********* CSA18 **********/
+/**************************/
+
+@svg-load csa-18-white url(csa-18.svg) {
+  fill: var(--white);
+}
+
+.csa18 {
+  composes: csa;
+  background-image: svg-inline(csa-18-white);
+}
+
+
+/***********************/
+/******* CLOSE *********/
+/***********************/
+
+@svg-load close-white url(close.svg) {
+  stroke: var(--white);
+}
+
+.close {
+  background-image: svg-inline(close-white);
+  background-repeat: no-repeat;
+  display: block;
+  width: 42px;
+  height: 42px;
+}
+
+/**********************/
+/******* REMOTE *******/
+/**********************/
+@svg-load remote-white url(remote.svg) {
+  fill: var(--white);
+}
+
+@svg-load remote-black url(remote.svg) {
+  fill: var(--black);
+}
+
+.remote {
+  background-image: svg-inline(remote-white);
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.remote:hover {
+  background-image: svg-inline(remote-black);
+}
+
+
+/**********************/
+/********* QR *********/
+/**********************/
+@svg-load qr-white url(qr.svg) {
+  fill: var(--white);
+}
+
+@svg-load qr-black url(qr.svg) {
+  fill: var(--black);
+}
+
+.qr {
+  background-image: svg-inline(qr-white);
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.qr:hover {
+  background-image: svg-inline(qr-black);
+}
+
+/**********************/
+/****** HAMBURGER *****/
+/**********************/
+@svg-load hamburger-white url(hamburger.svg) {
+  fill: var(--white);
+}
+
+@svg-load hamburger-black url(hamburger.svg) {
+  fill: var(--black);
+}
+
+.hamburger {
+  background-image: svg-inline(hamburger-white);
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.hamburger:hover {
+  background-image: svg-inline(hamburger-black);
+}
+
+/**********************/
+/****** INFO *****/
+/**********************/
+@svg-load info-white url(info.svg) {
+  fill: var(--white);
+}
+
+@svg-load info-black url(info.svg) {
+  fill: var(--black);
+}
+
+.info {
+  background-image: svg-inline(info-white);
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.info:hover {
+  background-image: svg-inline(info-black);
+}
+
+/**********************/
+/****** BUG *****/
+/**********************/
+@svg-load bug-white url(bug.svg) {
+  fill: var(--white);
+}
+
+.bug {
+  background-image: svg-inline(bug-white);
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+/************************/
+/******* SEARCH *********/
+/************************/
+
+@svg-load search url(search.svg) {
+  stroke: var(--greyMineShaftLight);
+}
+
+.search {
+  background-image: svg-inline(search);
+  background-repeat: no-repeat;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/************************/
+/******** CLOCK *********/
+/************************/
+
+@svg-load clock url(clock.svg) {
+  fill: var(--white);
+}
+
+.clock {
+  background-image: svg-inline(clock);
+  background-repeat: no-repeat;
+  display: block;
+  width: 20px;
+  height: 20px;
+}

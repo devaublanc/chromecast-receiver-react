@@ -1,0 +1,19 @@
+.root {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  transition: background .3s;
+}
+
+.tooltip {
+  font-weight: 600;
+  font-size: 14px;
+  padding: 7px 12px;
+  letter-spacing: -.5;
+  color: var(--black);
+}
+
+.disabled {
+  opacity: .5;
+  cursor: default;
+}

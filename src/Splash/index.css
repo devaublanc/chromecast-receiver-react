@@ -1,5 +1,15 @@
 .splash {
-    width: 50rem;
-    left: 25rem;
-    position: relative;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: var(--black);
+    z-index: 1000;
+}
+
+.logo {
+    position: absolute;
+    width: 70%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }

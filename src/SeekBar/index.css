@@ -1,0 +1,23 @@
+.root {
+}
+
+.progressContainer {
+  position: relative;
+  background: rgba(216,216,216,0.5);
+  box-shadow: 2px 1px 10px var(--black);
+  width: 100%;
+  height: var(--progress-height);
+  margin: 80px 0 10px 0;
+  border-radius: 4px;
+}
+
+.progress {
+  position: absolute;
+  width: 100%;
+}
+
+.preview {
+  position: absolute;
+  top: -150px;
+  transform: translateX(-75px);
+}

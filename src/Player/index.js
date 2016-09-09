@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 import Splash from '../Splash';
 import Loader from '../Loader';
+import Footer from '../Footer';
+import ControlBar from '../ControlBar';
+
+import consts from '../consts'
 
 import styles from './index.css';
 
@@ -19,7 +23,40 @@ class Player extends Component {
 
     state = {
         splash: true,
-        loading: false
+        loading: false,
+
+        asset: {
+            url: '',
+            token: '',
+            assetId: '',
+            assetType: null,
+            urlParams: {},
+            startAt: 0,
+            endAt: 0,
+            tracks: []
+        },
+
+        broadcast: {
+            broadcastId: 0,
+            title: '',
+            channelId: 0,
+            channelLogo: '',
+            isLive: false,
+            csa: null,
+            isBookmarked: false,
+            isLiked: false,
+            channelPoster: null
+        },
+
+        // times
+        mpdPublishTime: null,
+        liveProgress: 0,
+        liveDuration: 0,
+        seekProgress: 0,
+        watchingTime: 0,
+        fluxDuration: 0,
+        inactivity: 0,
+        delay: 0,
     };
 
 
@@ -28,8 +65,10 @@ class Player extends Component {
      * @param  {object} media cast
      * @return {undefined}
      */
-    loadFlux = ({ contentId, metadata }) => {
-        const protectionConfig = this.getProtectionConfig(metadata.asset.token);
+    loadFlux = (contentId, asset) => {
+        console.log('contentId', contentId);
+        console.log('asset', asset);
+        const protectionConfig = this.getProtectionConfig(asset.token);
         this.loader(true);
         this.video.setMediaKeys(null).then(() => {
             this.player.setProtectionData(protectionConfig);
@@ -71,6 +110,46 @@ class Player extends Component {
                 }
             }
         }
+    }
+
+    /**
+     * get channel logo
+     * @param  {number} channelId of channel
+     * @param  {string} type of src
+     * @return {string} url
+     */
+    getLogo = (channelId, type) => {
+        if (!channelId) return;
+        const assoc = {
+            logo: `${consts.urlLogo}${channelId}.png`,
+            poster: `${consts.urlPoster}${channelId}.png`
+        }
+        return assoc[type];
+    }
+
+    /**
+     * Check if the broadcast is live
+     * @return {bool} Is Live
+     */
+    isLive = () => {
+        return this.state.broadcast.isLive;
+    }
+
+    /**
+     * Check if the broadcast is replay
+     * @return {bool} Is Replay
+     */
+    isReplay = () => {
+        return !this.isLive();
+    }
+
+    /**
+     * Check if live progress is visible
+     * @return {undefined}
+     */
+    isLiveVisible = () => {
+        // return (this.getLiveProgress() >= this.state.seekProgress + 30) && this.state.isLiveRunning;
+        return false;
     }
 
     /************************************************************************************************************************************************
@@ -122,7 +201,18 @@ class Player extends Component {
      * @return {undefined}
      */
     onMediaManagerLoad = (e) => {
-        this.loadFlux(e.data.media);
+        const media = e.data.media;
+        const {
+            asset,
+            broadcast,
+        } = media.metadata
+
+        this.setState({
+            asset,
+            broadcast
+        });
+
+        this.loadFlux(media.contentId, asset);
     }
 
 
@@ -210,19 +300,58 @@ class Player extends Component {
 
         const {
             loading,
-            splash
+            splash,
+            asset,
+            broadcast,
+            liveDuration,
+            liveProgress,
+            isProgressLiveVisible,
+            seekProgress,
+            fluxDuration
         } = this.state;
+
+        const {
+            getLogo
+        } = this;
 
 
         return (
-            <div className={ styles.player } ref="container">
-                { splash && <Splash /> }
-                { loading && <Loader /> }
-                <video
-                    ref="video"
-                    autoPlay="false"
-                    className={ styles.video } />
+
+            <div className={ styles.root }>
+                <div className={ styles.player } ref="container">
+                    { splash && <Splash /> }
+                    { loading && <Loader /> }
+                    <video
+                        ref="video"
+                        autoPlay="false"
+                        className={ styles.video } />
+
+                    <Footer
+                        visible={ true }
+                        logo={ getLogo(broadcast.channelId, 'logo') }
+                        channelId={ broadcast.channelId }
+                        csa={ broadcast.csa }
+                        title={ broadcast.title }
+                        isLiked={ broadcast.isLiked }
+                        isBookmarked={ broadcast.isBookmarked }>
+                        <ControlBar
+                            tracks={ asset.tracks }
+                            progress={{
+                                liveDuration,
+                                liveProgress,
+                                isProgressLiveVisible,
+                                seekProgress,
+                                fluxDuration
+                            }}
+                            canplay={ true }
+                            isLive={ this.isLive() }
+                            isLiveVisible={ this.isLiveVisible() }
+                            isReplay={ this.isReplay() }
+                            isPlaying={ true } />
+                    </Footer>
+                </div>
             </div>
+
         );
     }
 }

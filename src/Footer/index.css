@@ -1,0 +1,18 @@
+.root {
+  background: linear-gradient(rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+  position: absolute;
+  width: 100%;
+  height: 180px;
+  transition: bottom var(--delay-out);
+  bottom: -180px;
+}
+
+.visible {
+  transition: bottom var(--delay-in);    
+  bottom: 0;
+}
+
+.info {
+  position: absolute;
+  top: 10px;
+}
