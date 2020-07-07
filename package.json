@@ -39,6 +39,7 @@
     "opn": "4.0.2",
     "postcss-loader": "0.9.1",
     "promise": "7.1.1",
+    "pushstate-server": "^3.1.0",
     "recursive-readdir": "2.0.0",
     "rimraf": "2.5.4",
     "strip-ansi": "3.0.1",
@@ -46,12 +47,12 @@
     "url-loader": "0.5.7",
     "webpack": "1.13.1",
     "webpack-dev-server": "1.14.1",
-    "whatwg-fetch": "1.0.0"    
+    "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "dashjs": "git@github.com:devaublanc/dash.js.git#fix.molotovNoBola",
     "react": "15.3.1",
-    "react-dom": "15.3.1",
-    "dashjs": "git@github.com:devaublanc/dash.js.git#fix.molotovNoBola"
+    "react-dom": "15.3.1"
   },
   "scripts": {
     "start": "node ./scripts/start.js",
